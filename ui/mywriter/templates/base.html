@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>
+        {% block title %}{% endblock title %}
+    </title>
+    {% block css %}{% endblock css %}
+    {% block js %}{% endblock js %}
+    <style>
+        .yarr > .body.with-sidebar {
+            height: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    {% block content %}
+    {% endblock content %}
+</body>
+
+</html>
