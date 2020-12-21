@@ -9,6 +9,6 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'mywriters', '--image', 'gcr.io/mywriters/github.com/noamelf/mywriters', '--region', 'europe-west1', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST}']
+  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/mywriters/github.com/noamelf/mywriters', '--region', 'europe-west1', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST}']
 images:
 - gcr.io/mywriters/github.com/noamelf/mywriters
