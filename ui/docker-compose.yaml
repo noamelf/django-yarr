@@ -1,0 +1,12 @@
+version: "3"
+services:
+  mywriters-ui:
+    image: gcr.io/mywriters/mywriters-ui:latest
+    build: "."
+    volumes:
+      - ./mywriters:/code/mywriters
+    environment:
+      - PORT=8001
+    ports:
+      - 8001:8001
+    command: gunicorn mywriters.wsgi
