@@ -78,7 +78,8 @@ WSGI_APPLICATION = 'mywriters.wsgi.application'
 
 DATABASES = {
     'default': {
-        'NAME': os.getenv('DATABASE_URL', (BASE_DIR / 'db.sqlite3')),
+        'NAME': os.getenv('DATABASE_URL', 'db'),
+        'ENGINE': 'django.db.backends.postgresql',
     }
 }
 
