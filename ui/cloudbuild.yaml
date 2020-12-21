@@ -21,6 +21,8 @@ steps:
       "DATABASE_URL=${_DATABASE_URL}",
       '-e',
       'SECRET_KEY=${_SECRET_KEY}',
+      '-e',
+      'SUPERUSER_PASSWORD=${_SUPERUSER_PASSWORD}',
       "--",
       "python",
       "manage.py",
