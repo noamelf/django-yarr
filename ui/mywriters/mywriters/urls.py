@@ -17,10 +17,12 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.urls.conf import path
 from django.contrib.auth import views as auth_views
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^yarr/', include('yarr.urls', namespace='yarr')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
