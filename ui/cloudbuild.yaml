@@ -36,7 +36,7 @@ steps:
 
 substitutions:
   _PROJECT_ID: mywriters
-  _INSTANCE_NAME: django-instance
+  _INSTANCE_NAME: ui-db
   _REGION: europe-west1
   _SERVICE_NAME: ui
 
