@@ -2,18 +2,18 @@ steps:
 
 - id: 'build image'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '-f', 'mywriters/Dockerfile','.']
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '-f', 'mywriters/Dockerfile','.']
   dir: 'ui'
 
 - id: 'push image'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}']
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest']
 
 - id: "apply migrations"
   name: "gcr.io/google-appengine/exec-wrapper"
   args:
     - "-i"
-    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}"
+    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest"
     - "-s"
     - "${_PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}"
     - "-e"
@@ -31,7 +31,7 @@ steps:
 - id: 'deploy service'
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}']
+  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}']
 
 substitutions:
   _PROJECT_ID: mywriters
