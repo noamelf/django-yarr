@@ -15,7 +15,7 @@ steps:
     - "-i"
     - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest"
     - "-s"
-    - "${_PROJECT_ID}:${_REGION}:${_INSTANCE_NAME}"
+    - "${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}"
     - "-e"
     - "DATABASE_URL=${_DATABASE_URL}"
     - '-e'
@@ -35,7 +35,7 @@ steps:
 
 substitutions:
   _PROJECT_ID: mywriters
-  _INSTANCE_NAME: ui-db
+  _DB_INSTANCE_NAME: ui-db
   _REGION: europe-west1
   _SERVICE_NAME: ui
 

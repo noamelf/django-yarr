@@ -9,19 +9,15 @@ ENV PYTHONFAULTHANDLER=1 \
   PIP_DEFAULT_TIMEOUT=100 \
   POETRY_VERSION=1.0.0
 
-# System deps:
 RUN pip install "poetry==$POETRY_VERSION"
 
 WORKDIR /code
-# Copy only requirements to cache them in docker layer
 COPY mywriters/poetry.lock mywriters/pyproject.toml /code/
 
-# Project initialization:
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
-# Creating folders, and files for a project:
-COPY mywriters /code/
+COPY mywriters /code/mywriters
 WORKDIR /code/mywriters
 
 COPY mywriters/entrypoint.sh /usr/local/bin/
