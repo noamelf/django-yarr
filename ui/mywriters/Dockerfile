@@ -24,4 +24,5 @@ RUN poetry config virtualenvs.create false \
 COPY mywriters /code/
 WORKDIR /code/mywriters
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+COPY mywriters/entrypoint.sh /usr/local/bin/
+ENTRYPOINT [ "entrypoint.sh" ]
