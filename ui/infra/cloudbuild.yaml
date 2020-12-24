@@ -23,6 +23,8 @@ steps:
       'SECRET_KEY=${_SECRET_KEY}',
       '-e',
       'SUPERUSER_PASSWORD=${_SUPERUSER_PASSWORD}',
+      '-e',
+      'TEST_USER_PASSWORD=${_TEST_USER_PASSWORD}',
       "--",
       "python",
       "manage.py",

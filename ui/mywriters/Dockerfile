@@ -14,14 +14,14 @@ RUN pip install "poetry==$POETRY_VERSION"
 
 WORKDIR /code
 # Copy only requirements to cache them in docker layer
-COPY poetry.lock pyproject.toml /code/
+COPY mywriters/poetry.lock mywriters/pyproject.toml /code/
 
 # Project initialization:
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
 # Creating folders, and files for a project:
-COPY . /code
+COPY mywriters /code/
 WORKDIR /code/mywriters
 
-CMD [ "gunicorn", "mywriters.wsgi" ]
+ENTRYPOINT [ "./entrypoint.sh" ]

@@ -1,12 +1,24 @@
 version: "3"
 services:
-  mywriters-ui:
+  ui:
     image: gcr.io/mywriters/mywriters-ui:latest
-    build: "."
+    build: 
+      context: .
+      dockerfile: mywriters/Dockerfile
     volumes:
       - ./mywriters:/code/mywriters
-    environment:
-      - PORT=8001
     ports:
       - 8001:8001
     command: gunicorn mywriters.wsgi
+    depends_on:
+      - db
+    env_file:
+      - mywriters/.env
+
+  db:
+    image: postgres
+    ports:
+      - 5440:5432
+    env_file:
+      - infra/db-local.env
+
