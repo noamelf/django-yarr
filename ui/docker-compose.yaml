@@ -7,6 +7,7 @@ services:
       dockerfile: mywriters/Dockerfile
     volumes:
       - ./mywriters:/code/mywriters
+      - ./mywriters/entrypoint.sh:/usr/local/bin/entrypoint.sh
     ports:
       - 8001:8001
     command: gunicorn mywriters.wsgi
