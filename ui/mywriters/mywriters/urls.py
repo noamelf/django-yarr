@@ -21,7 +21,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^yarr/', include('yarr.urls', namespace='yarr')),
+    url('/', include('yarr.urls', namespace='yarr')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 
