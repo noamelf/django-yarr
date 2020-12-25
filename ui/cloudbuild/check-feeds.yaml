@@ -1,6 +1,6 @@
 steps:
 
-- id: "apply migrations"
+- id: "Check RSS feeds"
   name: "gcr.io/google-appengine/exec-wrapper"
   args:
     - "-i"
