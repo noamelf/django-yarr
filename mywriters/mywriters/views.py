@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 
@@ -18,7 +18,7 @@ def signup(request):
             login(request, user)
             return redirect('/')
         logger.info('Signup form invalid')
-        
+
     return render(request, 'mywriters/signup.html')
 
 def user_login(request):
@@ -31,3 +31,7 @@ def user_login(request):
             return redirect('/')
         
     return render(request, 'mywriters/login.html')
+
+def user_logout(request):
+    logout(request)      
+    return redirect('/')

@@ -10,9 +10,10 @@ urlpatterns = [
     # path('', views.index, name='index'),
     url('signup/', views.signup, name='signup'),
     url('login/', views.user_login, name='login'),
+    url('logout/', views.user_logout, name='logout'),
     path('admin/', admin.site.urls),
     url('', include('yarr.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
