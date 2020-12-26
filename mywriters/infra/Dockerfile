@@ -12,7 +12,7 @@ ENV PYTHONFAULTHANDLER=1 \
 RUN pip install "poetry==$POETRY_VERSION"
 
 WORKDIR /code
-COPY mywriters/poetry.lock mywriters/pyproject.toml /code/
+COPY infra/poetry.lock infra/pyproject.toml /code/
 
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
@@ -20,5 +20,5 @@ RUN poetry config virtualenvs.create false \
 COPY mywriters /code/mywriters
 WORKDIR /code/mywriters
 
-COPY mywriters/entrypoint.sh /usr/local/bin/
+COPY infra/entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "entrypoint.sh" ]

@@ -1,13 +1,13 @@
 version: "3"
 services:
-  ui:
+  mywriters:
     image: gcr.io/mywriters/ui:latest
     build: 
-      context: .
-      dockerfile: mywriters/Dockerfile
+      context: mywriters
+      dockerfile: infra/Dockerfile
     volumes:
       - ./mywriters:/code/mywriters
-      - ./mywriters/entrypoint.sh:/usr/local/bin/entrypoint.sh
+      - ./mywriters/infra/entrypoint.sh:/usr/local/bin/entrypoint.sh
     ports:
       - 8001:8001
     command: serve-local
@@ -21,5 +21,5 @@ services:
     ports:
       - 5440:5432
     env_file:
-      - infra/db-local.env
+      - mywriters/infra/db-local.env
 
