@@ -2,18 +2,18 @@ steps:
 
 - id: 'build image'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '-f', 'infra/Dockerfile','mywriters']
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '-f', 'infra/Dockerfile','.']
   dir: 'mywriters'
 
 - id: 'push image'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest']
-
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}']
+  
 - id: "apply migrations"
   name: "gcr.io/google-appengine/exec-wrapper"
   args:
     - "-i"
-    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest"
+    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}"
     - "-s"
     - "${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}"
     - "-e"
