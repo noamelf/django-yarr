@@ -7,7 +7,7 @@ steps:
 
 substitutions:
   _PROJECT_ID: mywriters
-  _REGION: europe
+  _REGION: europe-west1
   _SERVICE_NAME: ui
 
 images:
