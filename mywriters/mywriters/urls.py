@@ -8,7 +8,8 @@ from . import views
 
 urlpatterns = [
     # path('', views.index, name='index'),
-    url(r'^signup/$', views.signup, name='signup'),
+    url('signup/', views.signup, name='signup'),
+    url('login/', views.user_login, name='login'),
     path('admin/', admin.site.urls),
     url('', include('yarr.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
