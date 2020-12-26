@@ -30,7 +30,7 @@ steps:
 - id: 'deploy service'
   name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}', '--command', 'serve']
+  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}', '--args', 'serve']
 
 substitutions:
   _PROJECT_ID: mywriters
