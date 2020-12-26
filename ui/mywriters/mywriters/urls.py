@@ -19,9 +19,12 @@ from django.urls.conf import path
 from django.contrib.auth import views as auth_views
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
+from . import views
+
 urlpatterns = [
+    path('', views.index, name='index'),
     path('admin/', admin.site.urls),
-    url('/', include('yarr.urls', namespace='yarr')),
+    url('^yarr/', include('yarr.urls', namespace='yarr')),
     path('accounts/', include('django.contrib.auth.urls')),
 ]
 

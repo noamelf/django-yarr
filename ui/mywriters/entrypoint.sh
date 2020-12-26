@@ -8,6 +8,9 @@ case "$1" in
     serve)
         exec gunicorn mywriters.wsgi
     ;;
+    serve-local)
+        exec python manage.py runserver 0.0.0.0:$PORT
+    ;;
     check-feeds)
         exec python manage.py check_feeds --read
     ;;

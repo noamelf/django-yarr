@@ -10,7 +10,7 @@ services:
       - ./mywriters/entrypoint.sh:/usr/local/bin/entrypoint.sh
     ports:
       - 8001:8001
-    command: gunicorn mywriters.wsgi
+    command: serve-local
     depends_on:
       - db
     env_file:
