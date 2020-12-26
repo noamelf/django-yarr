@@ -5,5 +5,10 @@ steps:
   entrypoint: gcloud
   args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}']
 
+substitutions:
+  _PROJECT_ID: mywriters
+  _REGION: europe
+  _SERVICE_NAME: ui
+
 images:
 - gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}
