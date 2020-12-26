@@ -17,8 +17,8 @@ COPY infra/poetry.lock infra/pyproject.toml /code/
 RUN poetry config virtualenvs.create false \
   && poetry install --no-interaction --no-ansi
 
-COPY mywriters /code/mywriters
-WORKDIR /code/mywriters
+COPY . /code
+WORKDIR /code
 
 COPY infra/entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "entrypoint.sh" ]
