@@ -1,0 +1,42 @@
+steps:
+
+- id: 'build image'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '-f', 'mywriters/Dockerfile','.']
+  dir: 'ui'
+
+- id: 'push image'
+  name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest']
+
+- id: "apply migrations"
+  name: "gcr.io/google-appengine/exec-wrapper"
+  args:
+    - "-i"
+    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest"
+    - "-s"
+    - "${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}"
+    - "-e"
+    - "DATABASE_URL=${_DATABASE_URL}"
+    - '-e'
+    - 'SECRET_KEY=${_SECRET_KEY}'
+    - '-e'
+    - 'SUPERUSER_PASSWORD=${_SUPERUSER_PASSWORD}'
+    - '-e'
+    - 'TEST_USER_PASSWORD=${_TEST_USER_PASSWORD}'
+    - "--"
+    - "migrate"    
+
+- id: 'deploy service'
+  name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}','--add-cloudsql-instances', '${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}', '--command', 'entrypoint.sh', '--args', 'serve']
+
+substitutions:
+  _PROJECT_ID: mywriters
+  _DB_INSTANCE_NAME: ui-db
+  _REGION: europe-west1
+  _SERVICE_NAME: ui
+
+images:
+- gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}
