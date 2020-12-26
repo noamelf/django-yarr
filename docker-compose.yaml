@@ -6,7 +6,7 @@ services:
       context: mywriters
       dockerfile: infra/Dockerfile
     volumes:
-      - ./mywriters:/code/mywriters
+      - ./mywriters:/code
       - ./mywriters/infra/entrypoint.sh:/usr/local/bin/entrypoint.sh
     ports:
       - 8001:8001
