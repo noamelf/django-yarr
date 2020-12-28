@@ -20,5 +20,6 @@ RUN poetry config virtualenvs.create false \
 COPY . /code
 WORKDIR /code
 
+ENV PYTHONPATH=$PYTHONPATH:/code/yarr
 COPY infra/entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "entrypoint.sh" ]

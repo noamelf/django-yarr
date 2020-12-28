@@ -1,0 +1,3 @@
+[submodule "mywriters/django-yarr"]
+	path = mywriters/yarr
+	url = git@github.com:noamelf/django-yarr.git

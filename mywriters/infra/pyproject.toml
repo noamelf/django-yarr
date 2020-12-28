@@ -7,10 +7,12 @@ authors = ["Noam Elfanbaum <noam.elf@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 django = "^3.1.4"
-django-yarr = "^0.6.1"
 gunicorn = "^20.0.4"
 psycopg2-binary = "^2.8.6"
 Django-environ = "^0.4.5"
+django-yaa-settings = "^1.1.0"
+bleach = ">=1.2.1"
+feedparser = ">=5.1.3"
 
 [tool.poetry.dev-dependencies]
 

@@ -12,6 +12,7 @@ urlpatterns = [
     url('login/', views.user_login, name='login'),
     url('logout/', views.user_logout, name='logout'),
     path('admin/', admin.site.urls),
+    path('catalogue/', views.catalogue),
     url('', include('yarr.urls')),
 
 ]
