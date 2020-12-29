@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'yarr',
     'mywriters',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [

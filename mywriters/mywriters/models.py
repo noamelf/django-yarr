@@ -1,8 +1,8 @@
+from django.conf import settings as django_settings
 from django.db import models
+from yarr.models import Feed
 
-class Catalogue(models.Model):
-    writer = models.TextField()
-    feed_url = models.URLField()
 
-# class UserCatalogue(models.Model):
-#     models.ForeignKey(Reporter, on_delete=models.CASCADE)
+class UserFeeds(models.Model):
+    user = models.ForeignKey(django_settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    feeds = models.ManyToManyField(Feed)

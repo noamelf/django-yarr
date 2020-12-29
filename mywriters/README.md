@@ -14,3 +14,12 @@ The app is based off a Django rss reader called [Django YARR](https://github.com
   ```bash
   python manage.py check_feeds --read
   ```
+
+  # ORM view
+
+  ```mermaid
+  erDiagram
+    User ||--|| UserFeeds : has
+    UserFeed ||--o{ Feed : points-to 
+    Feed ||--|| CachedFeed : has
+  ```
