@@ -4,8 +4,8 @@ from yarr import models
 
 
 class FeedAdmin(admin.ModelAdmin):
-    list_display = ["title", "is_active", "user", "next_check", "error"]
-    list_filter = ["is_active", "user"]
+    list_display = ["title", "is_active", "next_check", "error"]
+    list_filter = ["is_active"]
     search_fields = ["title", "feed_url", "site_url"]
     actions = ["deactivate", "clear_error"]
 

@@ -36,7 +36,7 @@ def get_entries(request, feed_pk, state):
     # Look up feed
     feed = None
     if feed_pk is None:
-        qs = qs.filter(feed__user=request.user)
+        qs = qs.filter(feed__userfeeds_set__user=request.user)
     else:
         feed = get_object_or_404(models.Feed, pk=feed_pk, user=request.user)
         qs = qs.filter(feed=feed)

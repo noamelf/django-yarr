@@ -123,7 +123,6 @@ class Feed(models.Model):
     )
 
     # Internal fields
-    user = models.ForeignKey(django_settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     added = models.DateTimeField(
         auto_now_add=True, help_text="Date this feed was added"
     )
