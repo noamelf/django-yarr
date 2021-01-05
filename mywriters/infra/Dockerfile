@@ -9,7 +9,7 @@ ENV PYTHONFAULTHANDLER=1 \
   POETRY_VERSION=1.0.0
 
 RUN apt update && \
-    apt install git 
+    apt install -y git 
 
 RUN pip install "poetry==$POETRY_VERSION"
 
