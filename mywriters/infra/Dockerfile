@@ -1,5 +1,4 @@
-FROM python:3.9-slim
-
+FROM python:3.9-slim-buster
 
 ENV PYTHONFAULTHANDLER=1 \
   PYTHONUNBUFFERED=1 \
@@ -8,6 +7,9 @@ ENV PYTHONFAULTHANDLER=1 \
   PIP_DISABLE_PIP_VERSION_CHECK=on \
   PIP_DEFAULT_TIMEOUT=100 \
   POETRY_VERSION=1.0.0
+
+RUN apt update && \
+    apt install git 
 
 RUN pip install "poetry==$POETRY_VERSION"
 

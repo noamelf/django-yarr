@@ -21,7 +21,7 @@ for elem in soup.find_all('article'):
     link = elem.find_all('a')[0].attrs['href']
     print(link)
     title = elem.find_all('a')[0].text
-    if not title:
+    if not title:``
         title = elem.find_all('a')[1].text
     print(title)
     if elem.find('time'):
