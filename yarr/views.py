@@ -36,7 +36,7 @@ def get_entries(request, feed_pk, state):
     # Look up feed
     feed = None
     if feed_pk is None:
-        qs = qs.filter(feed__userfeeds_set__user=request.user)
+        qs = qs.filter(feed__userfeeds__user=request.user)
     else:
         feed = get_object_or_404(models.Feed, pk=feed_pk, user=request.user)
         qs = qs.filter(feed=feed)
@@ -111,7 +111,7 @@ def list_entries(request, feed_pk=None, state=None, template="yarr/list_entries.
         title = "%s - %s" % (feed.title, title)
 
     # Get list of feeds for feed list
-    feeds = models.Feed.objects.filter(user=request.user)
+    feeds = models.Feed.objects.filter(userfeeds__user=request.user)
 
     # Determine current view for reverse
     if state is None:
