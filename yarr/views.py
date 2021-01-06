@@ -289,7 +289,7 @@ def feeds(request, template="yarr/feeds.html"):
                     If False, unmark as saved
     """
     # Get list of feeds for feed list
-    feeds = models.Feed.objects.filter(user=request.user)
+    feeds = models.Feed.objects.filter(userfeeds__user=request.user)
 
     add_form = forms.AddFeedForm()
 
