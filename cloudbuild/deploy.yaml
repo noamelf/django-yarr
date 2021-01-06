@@ -11,5 +11,3 @@ substitutions:
   _SERVICE_NAME: ui
   _DB_INSTANCE_NAME: ui-db
 
-images:
-- gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}

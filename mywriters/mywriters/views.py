@@ -1,6 +1,7 @@
 import logging
 
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect, render
 from yarr.models import Feed
@@ -44,7 +45,7 @@ def user_logout(request):
     logout(request)
     return redirect("/")
 
-
+@login_required
 def catalogue(request):
     if request.method == "GET":
         logger.info("GET")

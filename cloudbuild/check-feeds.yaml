@@ -14,12 +14,8 @@ steps:
     - "--"
     - "check-feeds"
     
-    
 substitutions:
   _PROJECT_ID: mywriters
   _DB_INSTANCE_NAME: ui-db
   _REGION: europe-west1
   _SERVICE_NAME: ui
-
-images:
-- gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}

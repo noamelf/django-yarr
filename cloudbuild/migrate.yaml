@@ -20,5 +20,3 @@ substitutions:
   _REGION: europe-west1
   _SERVICE_NAME: ui
 
-images:
-- gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}
