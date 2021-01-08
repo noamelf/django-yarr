@@ -112,6 +112,7 @@ class Feed(models.Model):
         "Feed URL", validators=[URLValidator()], help_text="URL of the RSS feed"
     )
     rss = models.TextField(null=True)
+    image = models.URLField(null=True)
     text = models.TextField(
         "Custom title",
         blank=True,
