@@ -13,8 +13,6 @@ services:
     command: serve-local
     depends_on:
       - db
-    env_file:
-      - mywriters/.env
 
   db:
     image: postgres
