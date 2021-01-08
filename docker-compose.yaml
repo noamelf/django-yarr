@@ -13,6 +13,8 @@ services:
     command: serve-local
     depends_on:
       - db
+    environment:
+      - PORT=8001
 
   db:
     image: postgres

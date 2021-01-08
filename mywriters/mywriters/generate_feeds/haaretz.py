@@ -31,7 +31,8 @@ def generate_feed(author, writer_image, url, entries):
 
 
 def get_writer_image(soup):
-    return soup.select_one('[src*=".png"]').attrs["src"].split("?")[0]
+    image = soup.select_one('[src*=".png"]')
+    return image.attrs["src"].split("?")[0] if image else None
 
 
 def get_writer_entries(soup):
