@@ -11,7 +11,7 @@ case "$1" in
     serve-local)
         exec python manage.py runserver 0.0.0.0:$PORT
     ;;
-    check-feeds)
+    generate-feeds)
         exec python manage.py generate-feeds
     ;;
     *)
