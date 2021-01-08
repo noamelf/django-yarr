@@ -12,7 +12,7 @@ case "$1" in
         exec python manage.py runserver 0.0.0.0:$PORT
     ;;
     generate-feeds)
-        exec python manage.py generate-feeds
+        exec python manage.py generate-feed
     ;;
     *)
         exec "$@"
