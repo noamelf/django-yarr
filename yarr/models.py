@@ -107,10 +107,11 @@ class Feed(models.Model):
     """
 
     # Compulsory data fields
-    title = models.TextField(help_text="Published title of the feed")
+    title = models.TextField(help_text="Published title of the feed",  unique=True)
     feed_url = models.TextField(
         "Feed URL", validators=[URLValidator()], help_text="URL of the RSS feed"
     )
+    rss = models.TextField(null=True)
     text = models.TextField(
         "Custom title",
         blank=True,
@@ -119,7 +120,7 @@ class Feed(models.Model):
 
     # Optional data fields
     site_url = models.TextField(
-        "Site URL", validators=[URLValidator()], help_text="URL of the HTML site"
+        "Site URL", validators=[URLValidator()], help_text="URL of the HTML site", unique=True
     )
 
     # Internal fields
@@ -168,6 +169,14 @@ class Feed(models.Model):
     def update_count_total(self):
         """Update the cached total item count"""
         self.count_total = self.entries.count()
+
+    def _fetch_feed_from_db(self):
+        d = feedparser.parse(self.rss)
+
+        feed = d.get("feed", None)
+        entries = d.get("entries", [])
+        return feed, entries
+
 
     def _fetch_feed(self, url_history=None):
         """
@@ -325,7 +334,7 @@ class Feed(models.Model):
         # Fetch feed
         logfile.write("Fetching...")
         try:
-            feed, entries = self._fetch_feed()
+            feed, entries =  self._fetch_feed() if self.rss == None else self._fetch_feed_from_db()
         except FeedError as e:
             logfile.write("Error: %s" % e)
 
