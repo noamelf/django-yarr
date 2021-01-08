@@ -32,6 +32,20 @@ steps:
   entrypoint: gcloud
   args: ['run', 'deploy', 'ui', '--image', 'gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}', '--region', '${_REGION}', '--platform', 'managed', '--set-env-vars', 'HOST=${_HOST},DATABASE_URL=${_DATABASE_URL},SECRET_KEY=${_SECRET_KEY}','--add-cloudsql-instances', '${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}', '--command', 'entrypoint.sh', '--args', 'serve']
 
+- id: "Check RSS feeds"
+  name: "gcr.io/google-appengine/exec-wrapper"
+  args:
+    - "-i"
+    - "gcr.io/${_PROJECT_ID}/${_SERVICE_NAME}:latest"
+    - "-s"
+    - "${_PROJECT_ID}:${_REGION}:${_DB_INSTANCE_NAME}"
+    - "-e"
+    - "DATABASE_URL=${_DATABASE_URL}"
+    - '-e'
+    - 'SECRET_KEY=${_SECRET_KEY}'
+    - "--"
+    - "generate-feeds"
+
 substitutions:
   _PROJECT_ID: mywriters
   _DB_INSTANCE_NAME: ui-db
