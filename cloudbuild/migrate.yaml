@@ -12,7 +12,7 @@ steps:
     - '-e'
     - 'SECRET_KEY=${_SECRET_KEY}'
     - "--"
-    - "check-feeds"
+    - "migrate"
     
 substitutions:
   _PROJECT_ID: mywriters
