@@ -48,7 +48,6 @@ def user_logout(request):
 @login_required
 def catalogue(request):
     if request.method == "GET":
-        logger.info("GET")
         return render(request, "mywriters/catalogue.html", {"form": AddFeedForm()})
 
     elif request.method == "POST":

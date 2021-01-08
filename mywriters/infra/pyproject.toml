@@ -14,6 +14,9 @@ Django-environ = "^0.4.5"
 # bleach = ">=1.2.1"
 # feedparser = ">=5.1.3"
 django-yarr = { git = "https://github.com/noamelf/django-yarr.git", branch = "develop" }
+requests = "^2.25.1"
+bs4 = "^0.0.1"
+feedgen = "^0.9.0"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.19.0"
