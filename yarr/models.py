@@ -121,7 +121,7 @@ class Feed(models.Model):
 
     # Optional data fields
     site_url = models.TextField(
-        "Site URL", validators=[URLValidator()], help_text="URL of the HTML site", unique=True
+        "Site URL", validators=[URLValidator()], help_text="URL of the HTML site"
     )
 
     # Internal fields
